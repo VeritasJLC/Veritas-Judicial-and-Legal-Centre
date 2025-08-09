@@ -5,92 +5,104 @@
 */
 
 (function($) {
-
-	var	$window = $(window),
+	var $window = $(window),
 		$body = $('body'),
 		$header = $('#header'),
 		$banner = $('#banner');
 
 	// Breakpoints.
-		breakpoints({
-			wide:      [ '1281px',  '1680px' ],
-			normal:    [ '981px',   '1280px' ],
-			narrow:    [ '841px',   '980px'  ],
-			narrower:  [ '737px',   '840px'  ],
-			mobile:    [ null,      '736px'  ]
-		});
+	breakpoints({
+		wide:      [ '1281px',  '1680px' ],
+		normal:    [ '981px',   '1280px' ],
+		narrow:    [ '841px',   '980px'  ],
+		narrower:  [ '737px',   '840px'  ],
+		mobile:    [ null,      '736px'  ]
+	});
 
 	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+	$window.on('load', function() {
+		window.setTimeout(function() {
+			$body.removeClass('is-preload');
+		}, 100);
+	});
 
 	// Scrolly.
-		$('.scrolly').scrolly({
-			speed: 1000,
-			offset: function() { return $header.height() + 10; }
-		});
+	$('.scrolly').scrolly({
+		speed: 1000,
+		offset: function() { return $header.height() + 10; }
+	});
 
 	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			expandMode: (browser.mobile ? 'click' : 'hover')
-		});
+	$('#nav > ul').dropotron({
+		mode: 'fade',
+		noOpenerFade: true,
+		expandMode: (browser.mobile ? 'click' : 'hover')
+	});
 
 	// Nav Panel.
+	// Button.
+	$('<div id="navButton">' +
+		'<a href="#navPanel" class="toggle"></a>' +
+		'</div>')
+		.appendTo($body);
 
-		// Button.
-			$(
-				'<div id="navButton">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-				'</div>'
-			)
-				.appendTo($body);
+	// Panel.
+	$('<div id="navPanel">' +
+		'<nav>' +
+		$('#nav').navList() +
+		'</nav>' +
+		'</div>')
+		.appendTo($body)
+		.panel({
+			delay: 500,
+			hideOnClick: true,
+			hideOnSwipe: true,
+			resetScroll: true,
+			resetForms: true,
+			side: 'left',
+			target: $body,
+			visibleClass: 'navPanel-visible'
+		});
 
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
-
-		// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
-			if (browser.os == 'wp' && browser.osVersion < 10)
-				$('#navButton, #navPanel, #page-wrapper')
-					.css('transition', 'none');
+	// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
+	if (browser.os == 'wp' && browser.osVersion < 10)
+		$('#navButton, #navPanel, #page-wrapper')
+			.css('transition', 'none');
 
 	// Header.
-		if (!browser.mobile
-		&&	$header.hasClass('alt')
-		&&	$banner.length > 0) {
-
-			$window.on('load', function() {
-
-				$banner.scrollex({
-					bottom:		$header.outerHeight(),
-					terminate:	function() { $header.removeClass('alt'); },
-					enter:		function() { $header.addClass('alt reveal'); },
-					leave:		function() { $header.removeClass('alt'); }
-				});
-
+	if (!browser.mobile
+	&& $header.hasClass('alt')
+	&& $banner.length > 0) {
+		$window.on('load', function() {
+			$banner.scrollex({
+				bottom:		$header.outerHeight(),
+				terminate:	function() { $header.removeClass('alt'); },
+				enter:		function() { $header.addClass('alt reveal'); },
+				leave:		function() { $header.removeClass('alt'); }
 			});
+		});
+	}
 
-		}
+	// Disclaimer Modal Functionality
+$(document).ready(function() {
+    console.log('Modal script loaded'); // Debug: Confirm script runs
+    var $disclaimerModal = $('#disclaimer-modal');
+    var $acceptButton = $('#accept-disclaimer');
+
+    // Check if elements exist
+    if ($disclaimerModal.length && $acceptButton.length) {
+        console.log('Modal and button found'); // Debug: Confirm elements exist
+        // Always show the modal on page load
+        $disclaimerModal.removeClass('hidden');
+        console.log('Modal shown'); // Debug: Confirm modal is displayed
+
+        $acceptButton.on('click', function() {
+            console.log('Accept button clicked'); // Debug: Confirm click event
+            $disclaimerModal.addClass('hidden');
+        });
+    } else {
+        console.log('Modal or button not found'); // Debug: Identify missing elements
+    }
+});
 
 })(jQuery);

@@ -3339,3 +3339,80 @@ input, select, textarea {
 			}
 
 	}
+
+/* Custom styles for Disclaimer Modal */
+#disclaimer-modal {
+    position: fixed; /* Keeps it fixed on the screen, overlaying everything */
+    top: 0;
+    left: 0;
+    width: 100%; /* full width of the screen */
+    height: 100%; /* full height of the screen */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background to dim the page */
+    display: flex; /* Centers the content inside */
+    align-items: center;
+    justify-content: center;
+    z-index: 10000; /* High z-index to ensure it's on top of other elements */
+}
+
+#disclaimer-modal.hidden {
+    display: none; /* Hides the modal when the 'hidden' class is added */
+}
+
+.modal-content {
+    background: #fff; /* White background for content box */
+    padding: 1.5em; /* Reduced padding for compactness */
+    border-radius: 6px; /* Slightly smaller rounded corners */
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Smaller max width for compact look */
+    min-width: 300px; /* Prevents it from getting too narrow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    color: #5e560b; /* Matches template's text color */
+    font-size: 0.9em; /* Smaller base font size (relative to template's 15pt) */
+}
+
+.modal-content h2 {
+    font-size: 1.2em; /* Smaller heading (was 1.5em) */
+    margin-bottom: 0.75em; /* Reduced spacing */
+    text-align: center; /* Centered title */
+    font-weight: 400; /* Matches template's h2 weight */
+    text-transform: uppercase; /* Matches template's heading style */
+}
+
+.modal-content p {
+    margin-bottom: 0.75em; /* Reduced spacing between paragraphs */
+    line-height: 1.5em; /* Tighter line height for compactness */
+}
+
+.modal-content button {
+    background: #bab86c; /* Template's link/button color */
+    color: #fff; /* White text */
+    border: none;
+    padding: 0.6em 1.2em; /* Smaller padding for button */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em; /* Smaller button text */
+    display: block;
+    margin: 1em auto 0; /* Centers button with top margin */
+}
+
+.modal-content button:hover {
+    background: #5e560b; /* Darker hover color for interaction */
+}
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 736px) {
+    .modal-content {
+        padding: 1em; /* Even less padding on mobile */
+        font-size: 0.8em; /* Smaller font for mobile */
+        max-width: 90%; /* Slightly narrower on small screens */
+        min-width: 250px; /* Ensures it doesn't shrink too much */
+    }
+
+    .modal-content h2 {
+        font-size: 1em; /* Smaller heading on mobile */
+    }
+
+    .modal-content button {
+        font-size: 0.8em; /* Smaller button text on mobile */
+        padding: 0.5em 1em; /* Smaller button padding */
+    }
+}
