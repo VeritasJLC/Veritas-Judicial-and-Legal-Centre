@@ -3416,3 +3416,31 @@ input, select, textarea {
         padding: 0.5em 1em; /* Smaller button padding */
     }
 }
+/* Ensure labels are aligned left */
+.content label {
+    text-align: left !important;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style the button to be visible and functional */
+.buttons .special {
+    background-color: #bab86c !important; /* Matches template's link color */
+    color: #fff !important; /* White text for contrast */
+    border: none !important;
+    padding: 30px 30px !important;
+    border-radius: 4px !important;
+    cursor: hand !important;
+    display: inline-block !important;
+    width: auto !important;
+}
+
+.buttons .special:hover {
+    background-color: #5e560b !important; /* Darker hover color */
+}
+
+/* Ensure input fields and textarea have proper spacing */
+.content input, .content textarea {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+}
