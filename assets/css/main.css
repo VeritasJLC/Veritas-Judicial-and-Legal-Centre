@@ -1952,24 +1952,26 @@ input, select, textarea {
 					background: #829bc9;
 				}
 
-		.icon.circle.fa-whatsapp {
-    background: #25D366; 
-			color: #fff;
-}
-.icon.circle.fa-whatsapp:hover {
+			.icon.circle.fa-whatsapp {
+				background: #25D366; 
+				color: #fff;
+			}
+				.icon.circle.fa-whatsapp:hover {
+					background: #829bc9;
+				}
+			
+			.icon.circle.fa-linkedin {
+				color: #0077B5;
+			}
+				.icon.circle.fa-linkedin:hover {
 					background: #829bc9;
 				}
 
-.icon.circle.fa-linkedin {
-    color: #0077B5;
-}
-.icon.circle.fa-linkedin:hover {
-					background: #829bc9;
-				}
-.icon.circle.fa-slack:before {
-    color: #3AAF85;
-}
-.icon.circle.fa-slack:hover {
+			.icon.circle.fa-slack:before {
+				color: #3AAF85;
+			}
+
+				.icon.circle.fa-slack:hover {
 					background: #829bc9;
 				}
 
